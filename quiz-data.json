@@ -1,0 +1,112 @@
+[
+    {
+      "question": "Which of the following best explains why all content must be presented in text or have a text equivalent when designing for users who are blind?",
+      "options": {
+        "A": "Because screen readers can only interpret text content or text alternatives provided for non-text elements.",
+        "B": "Because blind users prefer text over other forms of content like images or videos.",
+        "C": "Because non-text content like images are automatically converted to text by screen readers.",
+        "D": "Because visual content is not important for users who are blind."
+      },
+      "answer": "A",
+      "explanation": "Screen readers rely on text and text equivalents (like alt text) to convey information from non-text elements. They cannot interpret images or other non-text content directly."
+    },
+    {
+      "question": "Why is it insufficient to convey information using visual attributes alone, such as color or spatial location, when designing accessible content?",
+      "options": {
+        "A": "Because screen readers cannot interpret visual styling and blind users may miss critical information.",
+        "B": "Because visual attributes increase the loading time of a webpage.",
+        "C": "Because using visual attributes violates web design best practices.",
+        "D": "Because all users, regardless of ability, prefer textual descriptions over visual cues."
+      },
+      "answer": "A",
+      "explanation": "Relying solely on visual attributes excludes users who cannot perceive those visuals. Important information should also be available through text or alternative methods that screen readers can convey."
+    },
+    {
+      "question": "When ensuring that all functionality is available using only the keyboard, which of the following considerations is most critical for users who are blind?",
+      "options": {
+        "A": "Testing keyboard navigation without a screen reader to ensure standard key functions work.",
+        "B": "Designing custom keyboard shortcuts for every function on the webpage.",
+        "C": "Testing keyboard navigation with the screen reader turned on, due to subtle differences in behavior.",
+        "D": "Limiting the number of interactive elements to simplify keyboard navigation."
+      },
+      "answer": "C",
+      "explanation": "Keyboard interactions can behave differently when a screen reader is active. Testing with the screen reader on ensures that all functionalities are truly accessible to blind users."
+    },
+    {
+      "question": "Which statement best describes the importance of using proper markup with good structure and semantics (like headings and landmarks) in accessible web design?",
+      "options": {
+        "A": "It improves SEO rankings by making the content more discoverable by search engines.",
+        "B": "It allows screen reader users to navigate and understand the content more effectively by leveraging semantic elements.",
+        "C": "It is required to meet minimum coding standards set by web development authorities.",
+        "D": "It ensures that the webpage looks consistent across different browsers and devices."
+      },
+      "answer": "B",
+      "explanation": "Proper semantic markup enables screen reader users to navigate using headings, landmarks, and other structural elements, enhancing their understanding and navigation of the content."
+    },
+    {
+      "question": "For custom controls (like expand/collapse buttons or sliders), why is it essential to define the correct name/label, role, and value, and ensure these values update appropriately?",
+      "options": {
+        "A": "Because custom controls without these attributes will not function correctly in modern browsers.",
+        "B": "Because screen readers rely on ARIA attributes to convey the purpose and state of custom controls to users who are blind.",
+        "C": "Because it allows developers to track user interactions more effectively for analytics.",
+        "D": "Because it enhances the visual styling of the control elements on the webpage."
+      },
+      "answer": "B",
+      "explanation": "Custom controls lack native semantic meaning. ARIA attributes provide the necessary information for screen readers to communicate the control's role, name, and state to the user."
+    },
+    {
+      "question": "What is the primary reason that users must receive immediate feedback via their screen reader after all actions they perform on a webpage?",
+      "options": {
+        "A": "To satisfy user expectations for interactive content.",
+        "B": "Because silence can cause confusion, leaving users unaware if their action was successful or if the interface is unresponsive.",
+        "C": "To reduce the cognitive load by providing auditory stimuli.",
+        "D": "Because screen readers require frequent updates to function correctly."
+      },
+      "answer": "B",
+      "explanation": "Immediate feedback confirms that an action has been received and processed, preventing uncertainty and improving the user experience for those relying on screen readers."
+    },
+    {
+      "question": "In the context of video content, when are audio descriptions necessary to make the content accessible to users who are blind?",
+      "options": {
+        "A": "Only when the video contains background music.",
+        "B": "When the visual elements convey important information not described in the original audio track.",
+        "C": "For all videos longer than five minutes.",
+        "D": "Only if the video lacks closed captions."
+      },
+      "answer": "B",
+      "explanation": "Audio descriptions are needed to describe essential visual information that is not already conveyed through dialogue or existing audio, ensuring users who are blind fully understand the content."
+    },
+    {
+      "question": "Why won't custom swipe actions on mobile web pages work with the screen reader turned on for users who are blind?",
+      "options": {
+        "A": "Because mobile browsers disable swipe functionality when a screen reader is active.",
+        "B": "Because screen readers on mobile devices use swipe gestures for navigation, overriding custom swipe actions.",
+        "C": "Because custom swipe actions are considered outdated in modern web design.",
+        "D": "Because screen readers convert swipe actions into voice commands."
+      },
+      "answer": "B",
+      "explanation": "On mobile devices, screen readers utilize swipe gestures for navigating content, which can conflict with and override any custom swipe actions implemented on a webpage."
+    },
+    {
+      "question": "Which of the following best practices ensures that interactive elements are accessible to users who are blind on mobile devices?",
+      "options": {
+        "A": "Implementing touch-and-hold actions for all interactive elements.",
+        "B": "Using click actions exclusively, avoiding reliance on custom swipe gestures.",
+        "C": "Designing larger buttons to accommodate screen reader focus.",
+        "D": "Incorporating voice commands for all interactions."
+      },
+      "answer": "B",
+      "explanation": "Click actions are accessible to screen reader users on mobile devices, as custom swipe gestures may conflict with the screen reader's navigation controls."
+    },
+    {
+      "question": "What is the main challenge for users who are blind when interacting with web content that relies heavily on visual feedback without textual or auditory confirmation?",
+      "options": {
+        "A": "They might misinterpret the content due to lack of visual context.",
+        "B": "They may experience increased loading times.",
+        "C": "They are unable to perceive changes or updates, leading to confusion or missed information.",
+        "D": "They might find the content less engaging."
+      },
+      "answer": "C",
+      "explanation": "Without textual or auditory feedback, users who are blind may not be aware of changes occurring on the page, which can hinder their ability to interact effectively with the content."
+    }
+  ]

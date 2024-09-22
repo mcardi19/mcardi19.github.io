@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Choice Quiz</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        #question {
+            font-size: 1.5rem;
+        }
+        #feedback {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div id="quiz-container">
+            <!-- Question -->
+            <div id="question" class="mb-4"></div>
+            <!-- Options -->
+            <form id="quiz-form">
+                <div id="options" class="mb-3"></div>
+            </form>
+            <!-- Controls -->
+            <div id="controls" class="mb-4">
+                <button type="button" id="prev-btn" class="btn btn-secondary me-2" disabled>Previous</button>
+                <button type="button" id="next-btn" class="btn btn-secondary me-2" disabled>Next</button>
+                <button type="button" id="submit-btn" class="btn btn-primary ">Submit</button>
+
+            </div>
+            <!-- Feedback -->
+            <div id="feedback" class="mb-4"></div>
+            <!-- Scoreboard -->
+            <div id="scoreboard" class="alert alert-info">
+                <p>Correct Answers: <span id="correct-count">0</span></p>
+                <p>Incorrect Attempts: <span id="incorrect-count">0</span></p>
+                <p>Ratio (Correct:Incorrect): <span id="ratio">0:0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let quizData = [];
+        let currentQuestionIndex = 0;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let questionsAnswered = {};
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const correctCountEl = document.getElementById('correct-count');
+        const incorrectCountEl = document.getElementById('incorrect-count');
+        const ratioEl = document.getElementById('ratio');
+        const submitBtn = document.getElementById('submit-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('quiz-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    quizData = data;
+                    shuffleArray(quizData); // Shuffle the questions
+                    currentQuestionIndex = 0;
+                    correctCount = 0;
+                    incorrectCount = 0;
+                    questionsAnswered = {};
+                    updateScoreboard();
+                    loadQuestion();
+                })
+                .catch(error => {
+                    feedbackEl.textContent = 'Failed to load quiz data.';
+                    feedbackEl.style.color = 'red';
+                });
+        });
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function loadQuestion() {
+            // Clear previous feedback
+            feedbackEl.textContent = '';
+            feedbackEl.style.color = '';
+            submitBtn.disabled = false;
+            nextBtn.disabled = true;
+
+            // Update previous button state
+            prevBtn.disabled = currentQuestionIndex === 0;
+
+            // Load the current question
+            const currentQuestion = quizData[currentQuestionIndex];
+            questionEl.textContent = `Question ${currentQuestionIndex + 1}: ${currentQuestion.question}`;
+
+            // Load options
+            optionsEl.innerHTML = '';
+            for (const [key, value] of Object.entries(currentQuestion.options)) {
+                const optionDiv = document.createElement('div');
+                optionDiv.classList.add('form-check');
+                const radioInput = document.createElement('input');
+                radioInput.type = 'radio';
+                radioInput.name = 'option';
+                radioInput.value = key;
+                radioInput.id = `option-${key}`;
+                radioInput.classList.add('form-check-input');
+                // Preserve user's previous selection
+                if (questionsAnswered[currentQuestionIndex] && questionsAnswered[currentQuestionIndex].selectedOption === key) {
+                    radioInput.checked = true;
+                }
+
+                const label = document.createElement('label');
+                label.htmlFor = `option-${key}`;
+                label.textContent = `${key}: ${value}`;
+                label.classList.add('form-check-label');
+
+                optionDiv.appendChild(radioInput);
+                optionDiv.appendChild(label);
+                optionsEl.appendChild(optionDiv);
+            }
+
+            // If the question was already answered correctly, disable the submit button and enable next
+            if (questionsAnswered[currentQuestionIndex] && questionsAnswered[currentQuestionIndex].isCorrect) {
+                feedbackEl.textContent = `Correct! ${currentQuestion.explanation}`;
+                feedbackEl.style.color = 'green';
+                submitBtn.disabled = true;
+                nextBtn.disabled = false;
+            }
+        }
+
+        function updateScoreboard() {
+            correctCountEl.textContent = correctCount;
+            incorrectCountEl.textContent = incorrectCount;
+            ratioEl.textContent = `${correctCount}:${incorrectCount}`;
+        }
+
+        submitBtn.addEventListener('click', function() {
+            if (!quizData.length) {
+                feedbackEl.textContent = 'Please upload a quiz JSON file.';
+                feedbackEl.style.color = 'red';
+                return;
+            }
+
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (!selectedOption) {
+                feedbackEl.textContent = 'Please select an option.';
+                feedbackEl.style.color = 'red';
+                return;
+            }
+
+            const currentQuestion = quizData[currentQuestionIndex];
+            const isCorrect = selectedOption.value === currentQuestion.answer;
+
+            // Store user's selection and correctness
+            questionsAnswered[currentQuestionIndex] = {
+                selectedOption: selectedOption.value,
+                isCorrect: isCorrect
+            };
+
+            if (isCorrect) {
+                if (!questionsAnswered[currentQuestionIndex].alreadyCounted) {
+                    correctCount++;
+                    questionsAnswered[currentQuestionIndex].alreadyCounted = true;
+                }
+                feedbackEl.textContent = `Correct! ${currentQuestion.explanation}`;
+                feedbackEl.style.color = 'green';
+                submitBtn.disabled = true;
+                nextBtn.disabled = false;
+            } else {
+                incorrectCount++;
+                feedbackEl.textContent = 'Incorrect. Please try again.';
+                feedbackEl.style.color = 'red';
+            }
+            updateScoreboard();
+        });
+
+        nextBtn.addEventListener('click', function() {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                feedbackEl.textContent = 'You have reached the end of the quiz.';
+                feedbackEl.style.color = 'blue';
+                nextBtn.disabled = true;
+            }
+        });
+
+        prevBtn.addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        // Initialize the scoreboard
+        updateScoreboard();
+    </script>
+</body>
+</html>
