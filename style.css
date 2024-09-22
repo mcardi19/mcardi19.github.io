@@ -1,0 +1,13 @@
+
+/* Custom styles */
+#question {
+    font-size: 1.5rem;
+}
+#feedback {
+    font-weight: bold;
+}
+
+.question-number, .question-content {
+    display: block;
+
+}
