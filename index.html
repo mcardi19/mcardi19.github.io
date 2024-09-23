@@ -30,8 +30,7 @@
     </div>
     <!-- Controls -->
     <div class="controls-container mb-5">
-        <div id="controls" class="d-flex flex-column mb-4">
-            <button type="button" id="prev-btn" class="btn btn-secondary mb-2" disabled>Previous</button>
+        <div id="controls" class="d-flex flex-column mb-4 p-md-4">
             <button type="button" id="next-btn" class="btn btn-secondary mb-2" disabled>Next</button>
             <button type="button" id="submit-btn" class="btn btn-primary">Submit</button>
         </div>
@@ -54,7 +53,6 @@
         const ratioEl = document.getElementById('ratio');
         const submitBtn = document.getElementById('submit-btn');
         const nextBtn = document.getElementById('next-btn');
-        const prevBtn = document.getElementById('prev-btn');
 
         document.addEventListener('DOMContentLoaded', function() {
             fetch('quiz-data.json')
@@ -88,9 +86,6 @@
             feedbackEl.style.color = '';
             submitBtn.disabled = false;
             nextBtn.disabled = true;
-
-            // Update previous button state
-            prevBtn.disabled = currentQuestionIndex === 0;
 
             // Load the current question
             const currentQuestion = quizData[currentQuestionIndex];
@@ -185,13 +180,6 @@
                 feedbackEl.textContent = 'You have reached the end of the quiz.';
                 feedbackEl.style.color = 'blue';
                 nextBtn.disabled = true;
-            }
-        });
-
-        prevBtn.addEventListener('click', function() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                loadQuestion();
             }
         });
 
