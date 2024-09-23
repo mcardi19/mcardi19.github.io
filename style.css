@@ -1,15 +1,17 @@
 
 /* Custom styles */
 body {
-    background-color: #f3d8ff;
+    background-color: #ffffff;
 }
 
 .container {
     max-width: 768px;
+
+
 }
 
 #quiz-container {
-    background-color: white ; 
+    background-color: transparent;
 }
 
 #feedback {
