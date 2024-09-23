@@ -1,12 +1,15 @@
 
 /* Custom styles */
+body {
+    background-color: #d36cff;
+}
 
 .container {
-    background-color: rgb(153, 86, 168);
+    max-width: 768px;
 }
 
 #quiz-container {
-    background-color: white; 
+    background-color: #f3d8ff; 
 }
 
 #feedback {
@@ -14,7 +17,7 @@
 }
 
 #question {
-    background-color: rgb(251, 237, 254);
+    background: radial-gradient(#f6e2ff, #e6adff);
     border: 1px solid rgb(247, 221, 253);
     border-radius: 1.25rem;
 }
