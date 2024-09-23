@@ -95,4 +95,19 @@ button {
     border: none !important;
 }
 
+.btn {
+    border-radius: 100px !important;
+    padding: .5rem .5rem;
+}
+
+.controls-container {
+    position: fixed;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+#scoreboard {
+    display: none;
+}
+
 
