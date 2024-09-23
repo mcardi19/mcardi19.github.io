@@ -99,6 +99,9 @@ button {
 .btn {
     border-radius: 10px !important;
     padding: .75rem .5rem;
+    display: inline-block;
+    width: 100%;
+
 }
 
 .controls-container {
@@ -108,11 +111,13 @@ button {
     z-index: 10000;
     bottom: 0;
     background-color: white !important;
+
 }
 
 #controls {
     max-width: 768px;
     margin: 0 auto;
+    gap: 1rem;
 }
 
 #scoreboard {
