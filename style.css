@@ -41,7 +41,7 @@ body {
     margin-bottom: .5rem;
     background-color: rgb(235, 235, 235);
     padding: .5rem 1rem;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 150ms all;
 }
 
@@ -73,7 +73,7 @@ body {
 .form-check .form-check-input {
     margin-left: 0 !important;
     margin-top: 0px !important;
-    border-radius: 20px !important;
+    border-radius: 10px !important;
 }
 
 .form-check-label {
@@ -104,6 +104,11 @@ button {
     position: fixed;
     width: 100%;
     padding: 0 1rem;
+}
+
+#controls {
+    max-width: 768px;
+    margin: 0 auto;
 }
 
 #scoreboard {
