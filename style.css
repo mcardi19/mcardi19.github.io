@@ -103,10 +103,11 @@ button {
 
 .controls-container {
     width: 100%;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
     position: fixed;
     z-index: 10000;
     bottom: 0;
+    background-color: white;
 }
 
 #controls {
