@@ -107,7 +107,7 @@ button {
     position: fixed;
     z-index: 10000;
     bottom: 0;
-    background-color: white;
+    background-color: white !important;
 }
 
 #controls {
