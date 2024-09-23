@@ -18,8 +18,6 @@
             <form id="quiz-form">
                 <div id="options" class="mb-3"></div>
             </form>
-            <!-- Feedback -->
-            <div id="feedback" class="mb-4"></div>
             <!-- Scoreboard -->
             <div id="scoreboard" class="alert alert-info">
                 <p>Correct Answers: <span id="correct-count">0</span></p>
@@ -34,6 +32,19 @@
             <button type="button" id="next-btn" class="btn btn-secondary mb-2" disabled>Next</button>
             <button type="button" id="submit-btn" class="btn btn-primary">Submit</button>
         </div>
+    </div>
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+        <!-- Feedback -->
+        <div id="feedback" class="mb-4"></div>
+    </div>
     </div>
 
     <!-- Bootstrap 5 JS Bundle (includes Popper.js) -->

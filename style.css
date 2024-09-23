@@ -103,6 +103,9 @@ button {
 .controls-container {
     width: 100%;
     padding: 0 1rem;
+    position: fixed;
+    z-index: 10000;
+    bottom: 0;
 }
 
 #controls {
@@ -112,6 +115,10 @@ button {
 
 #scoreboard {
     display: none;
+}
+
+.offcanvas.offcanvas-bottom {
+    height: 50vh !important;
 }
 
 
