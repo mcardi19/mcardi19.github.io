@@ -40,7 +40,7 @@ body {
     position: relative !important;
     margin-bottom: .5rem;
     background-color: rgb(235, 235, 235);
-    padding: 1rem;
+    padding: .5rem 1rem;
     border-radius: 20px;
     transition: 150ms all;
 }
@@ -79,7 +79,7 @@ body {
 .form-check-label {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .choice-letter {
