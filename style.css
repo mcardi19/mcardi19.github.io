@@ -6,8 +6,6 @@ body {
 
 .container {
     max-width: 768px;
-
-
 }
 
 #quiz-container {
@@ -39,19 +37,62 @@ body {
 }
 
 .form-check {
+    position: relative !important;
     margin-bottom: .5rem;
     background-color: rgb(235, 235, 235);
     padding: 1rem;
     border-radius: 20px;
+    transition: 150ms all;
 }
 
 .form-check:hover {
     background-color: rgb(218, 218, 218);
-    cursor: ;
 }
 
 .form-check-input {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem !important;
+    opacity: .2;
+
+}
+
+.form-check-input:checked[type=radio] {
+    --bs-form-check-bg-image: unset !important;
+}
+
+.form-check-input:checked {
+    background-color: #e2a3ff !important;
+    border-color: #f2d5ff !important;
+}
+
+.form-check .form-check-input {
+    margin-left: 0 !important;
+    margin-top: 0px !important;
+    border-radius: 20px !important;
+}
+
+.form-check-label {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.choice-letter {
+    font-weight: 600;
+}
+
+.choice-text {
+    
+}
+
+button {
+    background-color: rgb(153, 65, 175) !important;
+    border: none !important;
 }
 
 
