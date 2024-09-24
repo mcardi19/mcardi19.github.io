@@ -77,6 +77,10 @@ body {
     border-radius: 10px !important;
 }
 
+.offcanvas-header {
+    justify-content: right;
+}
+
 .form-check-label {
     display: flex;
     flex-direction: row;
@@ -122,6 +126,7 @@ button {
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
     left: 0;
     top: -100%;
+
 }
 
 #controls {
