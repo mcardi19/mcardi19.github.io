@@ -119,6 +119,7 @@ button {
     z-index: 10000;
     bottom: 0;
     background-color: white !important;
+    
 }
 
 .controls-container::before {
@@ -129,7 +130,7 @@ button {
     height: 3rem;
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
     left: 0;
-    top: -100%;
+    bottom: 4rem;
 
 }
 
