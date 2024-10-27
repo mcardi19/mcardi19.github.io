@@ -19,6 +19,12 @@ body {
 
 #question {
     background: radial-gradient(#f6e2ff, #e6adff);
+    min-height: 300px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .question-number {
