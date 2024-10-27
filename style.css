@@ -5,10 +5,11 @@ body {
 
 #feedback {
     font-weight: bold;
+    font-size: 1rem;
 }
 
 #question {
-    background: radial-gradient(#f6e2ff, #e6adff);
+    background-image: radial-gradient(#f3f2ff, #d7d4ff) !important;
     min-height: 300px;
     display: inline-flex;
     flex-direction: column;
@@ -23,7 +24,7 @@ body {
 }
 
 #next-btn, #submit-btn {
-    background-color: rgb(153, 65, 175) !important;
+    background-color: #221c76 !important;
     color: #ffffff !important;
 }
 
@@ -107,10 +108,10 @@ body {
 }
 
 .form-check-input:checked {
-    background-color: #d2d2d2 !important;
+    background-color: #b2adff !important;
     box-shadow: none !important;
-    border: 4px #c200b8 solid !important;
-    background-image: radial-gradient(#f6e2ff, #e6adff) !important;
+    border: 4px #b2adff solid !important;
+
 }
 
 .form-check .form-check-input {
