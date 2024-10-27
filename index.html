@@ -7,10 +7,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
+        #question, .form-check {
+            opacity: 0;
+            animation: slideUp 1s cubic-bezier(.50,0,0,1) forwards;
+        }
+
+        #question {
+            animation-delay: 0s;
+        }
+
+        .form-check:nth-child(1) {
+            animation-delay: 0.15s;
+        }
+
+        .form-check:nth-child(2) {
+            animation-delay: 0.25s;
+        }
+
+        .form-check:nth-child(3) {
+            animation-delay: 0.35s;
+        }
+
+        .form-check:nth-child(4) {
+            animation-delay: 0.45s;
+        }
+    </style>
 </head>
 <body>
     <div class="p-2 container">
+        <!-- Question Counter -->
+        <div id="question-counter" class="text-center mb-3">
+            Score: <span class="correct-count">0</span>/<span class="questions-asked">0</span> | <span class="percentage">0%</span>
+        </div>
         <div class="p-3 rounded-5" id="quiz-container">
             <!-- Question -->
             <div id="question" class="mb-4 text-center p-3 py-4"></div>
@@ -36,163 +76,264 @@
 
     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
     <div class="offcanvas-header">
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <!-- Removed close button -->
     </div>
     <div class="offcanvas-body small">
         <!-- Feedback -->
         <div id="feedback" class="mb-4"></div>
     </div>
     </div>
-
-    <!-- Bootstrap 5 JS Bundle (includes Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="script.js"></script> -->
     <script>
+        // Global variables to manage quiz state
         let quizData = [];
         let currentQuestionIndex = 0;
         let correctCount = 0;
         let incorrectCount = 0;
         let questionsAnswered = {};
+        let questionsAsked = 0;
 
-        const questionEl = document.getElementById('question');
-        const optionsEl = document.getElementById('options');
-        const feedbackEl = document.getElementById('feedback');
-        const correctCountEl = document.getElementById('correct-count');
-        const incorrectCountEl = document.getElementById('incorrect-count');
-        const ratioEl = document.getElementById('ratio');
-        const submitBtn = document.getElementById('submit-btn');
-        const nextBtn = document.getElementById('next-btn');
+        // DOM element references
+        const elements = {
+            question: document.getElementById('question'),
+            options: document.getElementById('options'),
+            feedback: document.getElementById('feedback'),
+            correctCount: document.getElementById('correct-count'),
+            incorrectCount: document.getElementById('incorrect-count'),
+            ratio: document.getElementById('ratio'),
+            submitBtn: document.getElementById('submit-btn'),
+            nextBtn: document.getElementById('next-btn'),
+            questionCounter: {
+                correctCount: document.querySelector('#question-counter .correct-count'),
+                questionsAsked: document.querySelector('#question-counter .questions-asked'),
+                percentage: document.querySelector('#question-counter .percentage')
+            }
+        };
 
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('quiz-data.json')
-                .then(response => response.json())
+        // Event listener for when the DOM content is fully loaded
+        document.addEventListener('DOMContentLoaded', initializeQuiz);
+
+        function initializeQuiz() {
+            fetchQuizData()
                 .then(data => {
-                    quizData = data;
-                    shuffleArray(quizData); // Shuffle the questions
-                    currentQuestionIndex = 0;
-                    correctCount = 0;
-                    incorrectCount = 0;
-                    questionsAnswered = {};
+                    quizData = shuffleArray(data);
+                    resetQuizState();
                     updateScoreboard();
                     loadQuestion();
                 })
-                .catch(error => {
-                    feedbackEl.textContent = 'Failed to load quiz data.';
-                    feedbackEl.style.color = 'red';
-                });
-        });
+                .catch(handleQuizDataError);
+        }
+
+        function fetchQuizData() {
+            return fetch('quiz-data.json').then(response => response.json());
+        }
+
+        function resetQuizState() {
+            currentQuestionIndex = 0;
+            correctCount = 0;
+            incorrectCount = 0;
+            questionsAnswered = {};
+            questionsAsked = 0;
+        }
+
+        function handleQuizDataError() {
+            elements.feedback.textContent = 'Failed to load quiz data.';
+            elements.feedback.style.color = 'red';
+        }
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
+            return array;
         }
 
         function loadQuestion() {
-            // Clear previous feedback
-            feedbackEl.textContent = '';
-            feedbackEl.style.color = '';
-            submitBtn.disabled = false;
-            nextBtn.disabled = true;
-
-            // Load the current question
+            resetUIElements();
             const currentQuestion = quizData[currentQuestionIndex];
-            questionEl.innerHTML = `<span class="question-number">Question ${currentQuestionIndex + 1}</span><span class="question-content">${currentQuestion.question}</span>`;
+            displayQuestion(currentQuestion);
+            generateOptions(currentQuestion);
+            checkPreviousAnswer();
+            animateQuestionAndOptions();
+        }
 
-            // Load options
-            optionsEl.innerHTML = '';
-            for (const [key, value] of Object.entries(currentQuestion.options)) {
-                const optionDiv = document.createElement('div');
-                optionDiv.classList.add('form-check');
-                const radioInput = document.createElement('input');
-                radioInput.type = 'radio';
-                radioInput.name = 'option';
-                radioInput.value = key;
-                radioInput.id = `option-${key}`;
-                radioInput.classList.add('form-check-input');
-                // Preserve user's previous selection
-                if (questionsAnswered[currentQuestionIndex] && questionsAnswered[currentQuestionIndex].selectedOption === key) {
-                    radioInput.checked = true;
+        function resetUIElements() {
+            elements.feedback.textContent = '';
+            elements.feedback.style.color = '';
+            elements.submitBtn.disabled = false;
+            elements.nextBtn.disabled = true;
+        }
+
+        function displayQuestion(question) {
+            elements.question.innerHTML = `
+                <span class="question-number">Question ${currentQuestionIndex + 1}</span>
+                <span class="question-content">${question.question}</span>
+            `;
+        }
+
+        function generateOptions(question) {
+            elements.options.innerHTML = '';
+            Object.entries(question.options).forEach(([key, value]) => {
+                const optionElement = createOptionElement(key, value);
+                elements.options.appendChild(optionElement);
+            });
+        }
+
+        function createOptionElement(key, value) {
+            const optionDiv = document.createElement('div');
+            optionDiv.classList.add('form-check', 'shadow', 'p-4', 'mb-2', 'rounded-4');
+            
+            const radioInput = createRadioInput(key);
+            const label = createLabel(key, value);
+            
+            optionDiv.appendChild(radioInput);
+            optionDiv.appendChild(label);
+            return optionDiv;
+        }
+
+        function createRadioInput(key) {
+            const radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = 'option';
+            radioInput.value = key;
+            radioInput.id = `option-${key}`;
+            radioInput.classList.add('form-check-input');
+            
+            if (questionsAnswered[currentQuestionIndex]?.selectedOption === key) {
+                radioInput.checked = true;
+            }
+            
+            return radioInput;
+        }
+
+        function createLabel(key, value) {
+            const label = document.createElement('label');
+            label.htmlFor = `option-${key}`;
+            label.innerHTML = `<span class="choice-letter">${key}</span> <span class="choice-text">${value}</span>`;
+            label.classList.add('form-check-label');
+            return label;
+        }
+
+        function checkPreviousAnswer() {
+            const answeredQuestion = questionsAnswered[currentQuestionIndex];
+            if (answeredQuestion) {
+                elements.submitBtn.disabled = true;
+                elements.nextBtn.disabled = false;
+                if (answeredQuestion.isCorrect) {
+                    showCorrectAnswerFeedback();
+                } else {
+                    showIncorrectAnswerFeedback();
                 }
-
-                const label = document.createElement('label');
-                label.htmlFor = `option-${key}`;
-                label.innerHTML = `<span class="choice-letter">${key}</span> <span class="choice-text">${value}</span>`;
-                label.classList.add('form-check-label');
-
-                optionDiv.appendChild(radioInput);
-                optionDiv.appendChild(label);
-                optionsEl.appendChild(optionDiv);
             }
+        }
 
-            // If the question was already answered correctly, disable the submit button and enable next
-            if (questionsAnswered[currentQuestionIndex] && questionsAnswered[currentQuestionIndex].isCorrect) {
-                feedbackEl.textContent = `Correct! ${currentQuestion.explanation}`;
-                feedbackEl.style.color = 'green';
-                submitBtn.disabled = true;
-                nextBtn.disabled = false;
-            }
+        function showCorrectAnswerFeedback() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            elements.feedback.textContent = `Correct! ${currentQuestion.explanation}`;
+            elements.feedback.style.color = 'green';
+        }
+
+        function showIncorrectAnswerFeedback() {
+            elements.feedback.textContent = 'Incorrect.';
+            elements.feedback.style.color = 'red';
         }
 
         function updateScoreboard() {
-            correctCountEl.textContent = correctCount;
-            incorrectCountEl.textContent = incorrectCount;
-            ratioEl.textContent = `${correctCount}:${incorrectCount}`;
+            elements.correctCount.textContent = correctCount;
+            elements.incorrectCount.textContent = incorrectCount;
+            elements.ratio.textContent = `${correctCount}:${incorrectCount}`;
+            updateQuestionCounter();
         }
 
-        submitBtn.addEventListener('click', function() {
+        function updateQuestionCounter() {
+            const percentage = questionsAsked > 0 ? Math.round((correctCount / questionsAsked) * 100) : 0;
+
+            elements.questionCounter.correctCount.textContent = correctCount;
+            elements.questionCounter.questionsAsked.textContent = questionsAsked;
+            elements.questionCounter.percentage.textContent = `${percentage}%`;
+        }
+
+        function animateQuestionAndOptions() {
+            elements.question.style.animation = 'none';
+            elements.question.offsetHeight; // Trigger reflow
+            elements.question.style.animation = null;
+
+            const options = elements.options.querySelectorAll('.form-check');
+            options.forEach((option, index) => {
+                option.style.animation = 'none';
+                option.offsetHeight; // Trigger reflow
+                option.style.animation = null;
+                option.style.animationDelay = `${(index + 1) * 0.1}s`;
+            });
+        }
+
+        elements.submitBtn.addEventListener('click', handleSubmit); 
+        elements.nextBtn.addEventListener('click', handleNext);
+
+        function handleSubmit() {
             if (!quizData.length) {
-                feedbackEl.textContent = 'Please upload a quiz JSON file.';
-                feedbackEl.style.color = 'red';
+                showFeedback('<span class="feedback-message">Please upload a quiz JSON file.</span>', 'red');
                 return;
             }
 
             const selectedOption = document.querySelector('input[name="option"]:checked');
             if (!selectedOption) {
-                feedbackEl.textContent = 'Please select an option.';
-                feedbackEl.style.color = 'red';
+                showFeedback('<span class="feedback-message">Please select an option.</span>', 'red');
                 return;
             }
 
             const currentQuestion = quizData[currentQuestionIndex];
             const isCorrect = selectedOption.value === currentQuestion.answer;
 
-            // Store user's selection and correctness
-            questionsAnswered[currentQuestionIndex] = {
-                selectedOption: selectedOption.value,
-                isCorrect: isCorrect
-            };
+            questionsAnswered[currentQuestionIndex] = { selectedOption: selectedOption.value, isCorrect };
+            questionsAsked++;
 
             if (isCorrect) {
-                if (!questionsAnswered[currentQuestionIndex].alreadyCounted) {
-                    correctCount++;
-                    questionsAnswered[currentQuestionIndex].alreadyCounted = true;
-                }
-                feedbackEl.textContent = `Correct! ${currentQuestion.explanation}`;
-                feedbackEl.style.color = 'green';
-                submitBtn.disabled = true;
-                nextBtn.disabled = false;
+                handleCorrectAnswer(currentQuestion);
             } else {
-                incorrectCount++;
-                feedbackEl.textContent = 'Incorrect. Please try again.';
-                feedbackEl.style.color = 'red';
+                handleIncorrectAnswer();
             }
-            updateScoreboard();
-        });
 
-        nextBtn.addEventListener('click', function() {
+            elements.submitBtn.disabled = true;
+            elements.nextBtn.disabled = false;
+
+            updateScoreboard();
+        }
+
+        function showFeedback(message, color) {
+            elements.feedback.textContent = message;
+            elements.feedback.style.color = color;
+        }
+
+        function handleCorrectAnswer(question) {
+            if (!questionsAnswered[currentQuestionIndex].alreadyCounted) {
+                correctCount++;
+                questionsAnswered[currentQuestionIndex].alreadyCounted = true;
+            }
+            showFeedback(`Correct! ${question.explanation}`, 'green');
+        }
+
+        function handleIncorrectAnswer() {
+            incorrectCount++;
+            showFeedback('Incorrect.', 'red');
+        }
+
+        function handleNext() {
             if (currentQuestionIndex < quizData.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
             } else {
-                feedbackEl.textContent = 'You have reached the end of the quiz.';
-                feedbackEl.style.color = 'blue';
-                nextBtn.disabled = true;
+                showFeedback('You have reached the end of the quiz.', 'blue');
+                elements.nextBtn.disabled = true;
             }
-        });
+        }
 
-        // Initialize the scoreboard
+        // Initialize the scoreboard on page load
         updateScoreboard();
+
     </script>
 </body>
+
 </html>

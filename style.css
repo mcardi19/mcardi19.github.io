@@ -40,7 +40,6 @@ body {
 .form-check {
     position: relative !important;
     margin-bottom: .5rem;
-    background-color: rgb(235, 235, 235);
     padding: .5rem 1rem;
     border-radius: 10px;
     transition: 150ms all;
