@@ -2,10 +2,10 @@
     {
       "question": "Which of the following best explains why all content must be presented in text or have a text equivalent when designing for users who are blind?",
       "options": {
-        "A": "Because screen readers can only interpret text content or text alternatives provided for non-text elements.",
-        "B": "Because blind users prefer text over other forms of content like images or videos.",
-        "C": "Because non-text content like images are automatically converted to text by screen readers.",
-        "D": "Because visual content is not important for users who are blind."
+        "A": "Screen readers can only interpret text content or text alternatives provided for non-text elements.",
+        "B": "Blind users prefer text over other forms of content like images or videos.",
+        "C": "Non-text content like images are automatically converted to text by screen readers.",
+        "D": "Visual content is not important for users who are blind."
       },
       "answer": "A",
       "explanation": "Screen readers rely on text and text equivalents (like alt text) to convey information from non-text elements. They cannot interpret images or other non-text content directly."
@@ -13,10 +13,10 @@
     {
       "question": "Why is it insufficient to convey information using visual attributes alone, such as color or spatial location, when designing accessible content?",
       "options": {
-        "A": "Because screen readers cannot interpret visual styling and blind users may miss critical information.",
-        "B": "Because visual attributes increase the loading time of a webpage.",
-        "C": "Because using visual attributes violates web design best practices.",
-        "D": "Because all users, regardless of ability, prefer textual descriptions over visual cues."
+        "A": "Screen readers cannot interpret visual styling and blind users may miss critical information.",
+        "B": "Visual attributes increase the loading time of a webpage.",
+        "C": "Using visual attributes violates web design best practices.",
+        "D": "All users, regardless of ability, prefer textual descriptions over visual cues."
       },
       "answer": "A",
       "explanation": "Relying solely on visual attributes excludes users who cannot perceive those visuals. Important information should also be available through text or alternative methods that screen readers can convey."
@@ -46,10 +46,10 @@
     {
       "question": "For custom controls (like expand/collapse buttons or sliders), why is it essential to define the correct name/label, role, and value, and ensure these values update appropriately?",
       "options": {
-        "A": "Because custom controls without these attributes will not function correctly in modern browsers.",
-        "B": "Because screen readers rely on ARIA attributes to convey the purpose and state of custom controls to users who are blind.",
-        "C": "Because it allows developers to track user interactions more effectively for analytics.",
-        "D": "Because it enhances the visual styling of the control elements on the webpage."
+        "A": "Custom controls without these attributes will not function correctly in modern browsers.",
+        "B": "Screen readers rely on ARIA attributes to convey the purpose and state of custom controls to users who are blind.",
+        "C": "It allows developers to track user interactions more effectively for analytics.",
+        "D": "It enhances the visual styling of the control elements on the webpage."
       },
       "answer": "B",
       "explanation": "Custom controls lack native semantic meaning. ARIA attributes provide the necessary information for screen readers to communicate the control's role, name, and state to the user."
@@ -58,9 +58,9 @@
       "question": "What is the primary reason that users must receive immediate feedback via their screen reader after all actions they perform on a webpage?",
       "options": {
         "A": "To satisfy user expectations for interactive content.",
-        "B": "Because silence can cause confusion, leaving users unaware if their action was successful or if the interface is unresponsive.",
+        "B": "Silence can cause confusion, leaving users unaware if their action was successful or if the interface is unresponsive.",
         "C": "To reduce the cognitive load by providing auditory stimuli.",
-        "D": "Because screen readers require frequent updates to function correctly."
+        "D": "Screen readers require frequent updates to function correctly."
       },
       "answer": "B",
       "explanation": "Immediate feedback confirms that an action has been received and processed, preventing uncertainty and improving the user experience for those relying on screen readers."
@@ -79,10 +79,10 @@
     {
       "question": "Why won't custom swipe actions on mobile web pages work with the screen reader turned on for users who are blind?",
       "options": {
-        "A": "Because mobile browsers disable swipe functionality when a screen reader is active.",
-        "B": "Because screen readers on mobile devices use swipe gestures for navigation, overriding custom swipe actions.",
-        "C": "Because custom swipe actions are considered outdated in modern web design.",
-        "D": "Because screen readers convert swipe actions into voice commands."
+        "A": "Mobile browsers disable swipe functionality when a screen reader is active.",
+        "B": "Screen readers on mobile devices use swipe gestures for navigation, overriding custom swipe actions.",
+        "C": "Custom swipe actions are considered outdated in modern web design.",
+        "D": "Screen readers convert swipe actions into voice commands."
       },
       "answer": "B",
       "explanation": "On mobile devices, screen readers utilize swipe gestures for navigating content, which can conflict with and override any custom swipe actions implemented on a webpage."
@@ -112,10 +112,10 @@
     {
       "question": "Which of the following is a primary reason why the **pinch-to-zoom** feature must not be disabled on a web page when designing for users with low vision?",
       "options": {
-        "A": "Because disabling zoom can cause content to load more slowly on mobile devices.",
-        "B": "Because users with low vision rely on screen magnifiers, and disabling zoom prevents them from enlarging content to a readable size.",
-        "C": "Because it is required by web development best practices to allow zooming.",
-        "D": "Because pinch-to-zoom is the primary method for navigating web pages on all devices."
+        "A": "Disabling zoom can cause content to load more slowly on mobile devices.",
+        "B": "Users with low vision rely on screen magnifiers, and disabling zoom prevents them from enlarging content to a readable size.",
+        "C": "It is required by web development best practices to allow zooming.",
+        "D": "Pinch-to-zoom is the primary method for navigating web pages on all devices."
       },
       "answer": "B",
       "explanation": "Disabling the zoom feature with `user-scalable=no` hinders low vision users who need to enlarge content to read properly."
@@ -123,10 +123,10 @@
     {
       "question": "Why is it important that all text meets contrast guidelines against the background when designing for low vision users?",
       "options": {
-        "A": "Because low vision users may see in low contrast, making it difficult to distinguish text from the background if there is insufficient contrast.",
-        "B": "Because high contrast colors are more aesthetically pleasing in web design.",
-        "C": "Because low contrast text can cause webpages to load more slowly.",
-        "D": "Because users with normal vision prefer high contrast for readability."
+        "A": "Low vision users may see in low contrast, making it difficult to distinguish text from the background if there is insufficient contrast.",
+        "B": "High contrast colors are more aesthetically pleasing in web design.",
+        "C": "Low contrast text can cause webpages to load more slowly.",
+        "D": "Users with normal vision prefer high contrast for readability."
       },
       "answer": "A",
       "explanation": "Ensuring sufficient contrast helps users with low vision read text more easily."
@@ -134,10 +134,10 @@
     {
       "question": "In the context of web accessibility for low vision users, why must links, buttons, and controls have a visible `:focus` state and should have a visible `:hover` state?",
       "options": {
-        "A": "Because these states improve website performance on older browsers.",
-        "B": "Because they enhance the visual design and make the website look modern.",
-        "C": "Because they help low vision users identify where the keyboard or mouse focus is, aiding in navigation.",
-        "D": "Because search engines rank sites higher if they include these states."
+        "A": "These states improve website performance on older browsers.",
+        "B": "They enhance the visual design and make the website look modern.",
+        "C": "They help low vision users identify where the keyboard or mouse focus is, aiding in navigation.",
+        "D": "Search engines rank sites higher if they include these states."
       },
       "answer": "C",
       "explanation": "Visible `:focus` and `:hover` states assist low vision users in understanding where their interaction is occurring on the page."
@@ -146,9 +146,9 @@
       "question": "Which of the following best describes why the user interface should provide a clear visual distinction between content and controls when designing for low vision users?",
       "options": {
         "A": "To ensure that users do not accidentally activate controls while reading content.",
-        "B": "Because low vision users might have difficulty distinguishing controls from text if they blend with surrounding elements due to low contrast vision.",
+        "B": "Low vision users might have difficulty distinguishing controls from text if they blend with surrounding elements due to low contrast vision.",
         "C": "To comply with aesthetic guidelines set by design authorities.",
-        "D": "Because it reduces the amount of code needed, improving site performance."
+        "D": "It reduces the amount of code needed, improving site performance."
       },
       "answer": "B",
       "explanation": "Clear visual distinctions help users with low vision identify actionable elements on a webpage."
@@ -211,10 +211,10 @@
     {
       "question": "Why is it important to ensure that when implementing dynamic changes on a page (such as tooltips or error messages), these changes are positioned close to the current area of visual focus for users with low vision?",
       "options": {
-        "A": "Because screen magnifiers can only display content that is near the cursor.",
-        "B": "Because placing them elsewhere can cause screen magnifiers to malfunction.",
-        "C": "Because users with low vision may not notice changes outside their magnified area, potentially missing critical information.",
-        "D": "Because it improves the overall aesthetics and user experience for all users."
+        "A": "Screen magnifiers can only display content that is near the cursor.",
+        "B": "Placing them elsewhere can cause screen magnifiers to malfunction.",
+        "C": "Users with low vision may not notice changes outside their magnified area, potentially missing critical information.",
+        "D": "It improves the overall aesthetics and user experience for all users."
       },
       "answer": "C",
       "explanation": "Dynamic content appearing outside the magnified view may be missed by users with low vision."
@@ -277,7 +277,7 @@
     {
       "question": "In web design, why is it important not to rely on red and green colors alone to indicate status (such as \"online\" or \"offline\")?",
       "options": {
-        "A": "Because red and green are difficult to render on screens.",
+        "A": "Red and green are difficult to render on screens.",
         "B": "Users might prefer blue and yellow for status indicators.",
         "C": "Red and green may appear similar to users with red-green color-blindness.",
         "D": "It is against web design guidelines to use red and green."
@@ -332,10 +332,10 @@
     {
       "question": "Why are synchronized captions required for video content, rather than transcripts alone?",
       "options": {
-        "A": "Because captions reduce the video file size.",
-        "B": "Because transcripts cannot convey visual information.",
-        "C": "Because synchronized captions align text with the video's timing.",
-        "D": "Because transcripts are only useful for live broadcasts."
+        "A": "Captions reduce the video file size.",
+        "B": "Transcripts cannot convey visual information.",
+        "C": "Synchronized captions align text with the video's timing.",
+        "D": "Transcripts are only useful for live broadcasts."
       },
       "answer": "C",
       "explanation": "Synchronized captions display text at the same time as the corresponding audio in a video, allowing viewers to follow along accurately. Transcripts lack this timing, making it difficult to match dialogue with visual content."
@@ -464,10 +464,10 @@
     {
       "question": "Why are transcripts essential for audio and video content when designing for users who are deafblind?",
       "options": {
-        "A": "Because braille displays cannot interpret audio or video content directly.",
-        "B": "Because transcripts reduce the file size of multimedia content.",
-        "C": "Because users prefer reading over watching videos.",
-        "D": "Because transcripts enhance the SEO of the website."
+        "A": "Braille displays cannot interpret audio or video content directly.",
+        "B": "Transcripts reduce the file size of multimedia content.",
+        "C": "Users prefer reading over watching videos.",
+        "D": "Transcripts enhance the SEO of the website."
       },
       "answer": "A",
       "explanation": "Transcripts provide a text-based alternative that can be output to a braille display, allowing users who are deafblind to access information conveyed in audio or video formats."
@@ -552,6 +552,7 @@
     {
       "question": "Why is it important for web content to be fully operable using only the keyboard in terms of accessibility for users with motor disabilities?",
       "options": {
+        "A": "All users prefer keyboard navigation.",
         "A": "Because all users prefer keyboard navigation.",
         "B": "To ensure users without monitors can still navigate.",
         "C": "Because users with motor disabilities may be unable to use a mouse.",

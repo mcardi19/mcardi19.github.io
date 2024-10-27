@@ -19,13 +19,9 @@
             }
         }
 
-        #question, .form-check {
+        .form-check {
             opacity: 0;
             animation: slideUp 1s cubic-bezier(.50,0,0,1) forwards;
-        }
-
-        #question {
-            animation-delay: 0s;
         }
 
         .form-check:nth-child(1) {
@@ -47,13 +43,14 @@
 </head>
 <body>
     <div class="p-0 container">
-        <!-- Question Counter -->
-        <div id="question-counter" class="text-center mb-3">
-            Score: <span class="correct-count">0</span>/<span class="questions-asked">0</span> | <span class="percentage">0%</span>
+        <!-- Question -->
+        <div id="question" class="mb-4 text-center p-3 py-4">
+            <!-- Question Counter -->
+            <div id="question-counter" class="text-center mb-3">
+                Score: <span class="correct-count">0</span>/<span class="questions-asked">0</span> | <span class="percentage">0%</span>
+            </div>
         </div>
         <div class="p-3 rounded-5" id="quiz-container">
-            <!-- Question -->
-            <div id="question" class="mb-4 text-center p-3 py-4"></div>
             <!-- Options -->
             <form id="quiz-form">
                 <div id="options" class="mb-3"></div>
