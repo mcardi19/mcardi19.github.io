@@ -324,6 +324,7 @@
         }
 
         function handleNext() {
+            window.scrollTo(0, 0);
             if (currentQuestionIndex < quizData.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
