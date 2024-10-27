@@ -53,7 +53,7 @@
         <div class="p-3 rounded-5" id="quiz-container">
             <!-- Options -->
             <form id="quiz-form">
-                <div id="options" class="mb-3"></div>
+                <div id="options" class="mb-5"></div>
             </form>
             <!-- Scoreboard -->
             <div id="scoreboard" class="alert alert-info">
@@ -109,7 +109,10 @@
         };
 
         // Event listener for when the DOM content is fully loaded
-        document.addEventListener('DOMContentLoaded', initializeQuiz);
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeQuiz();
+            window.scrollTo(0, 0);
+        });
 
         function initializeQuiz() {
             fetchQuizData()
@@ -148,6 +151,7 @@
         }
 
         function loadQuestion() {
+            window.scrollTo(0, 0);
             resetUIElements();
             const currentQuestion = quizData[currentQuestionIndex];
             displayQuestion(currentQuestion);
