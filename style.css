@@ -130,7 +130,7 @@ button {
     height: 3rem;
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
     left: 0;
-    bottom: 4rem;
+    bottom: 100%;
 
 }
 
