@@ -68,8 +68,7 @@
     <!-- Controls -->
     <div class="controls-container">
         <div id="controls" class="d-flex flex-row p-md-4">
-            <button type="button" id="submit-btn" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Submit</button>
-            <button type="button" id="next-btn" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-dismiss="offcanvas" aria-label="Close" disabled>Next</button>
+            <button type="button" id="submit-btn" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" disabled>Submit</button>
         </div>
     </div>
 
@@ -102,7 +101,6 @@
             incorrectCount: document.getElementById('incorrect-count'),
             ratio: document.getElementById('ratio'),
             submitBtn: document.getElementById('submit-btn'),
-            nextBtn: document.getElementById('next-btn'),
             questionCounter: {
                 correctCount: document.querySelector('#question-counter .correct-count'),
                 questionsAsked: document.querySelector('#question-counter .questions-asked'),
@@ -165,8 +163,10 @@
         function resetUIElements() {
             elements.feedback.textContent = '';
             elements.feedback.style.color = '';
-            elements.submitBtn.disabled = false;
-            elements.nextBtn.disabled = true;
+            elements.submitBtn.disabled = true;
+            elements.submitBtn.textContent = 'Submit';
+            elements.submitBtn.removeEventListener('click', handleNext);
+            elements.submitBtn.addEventListener('click', handleSubmit);
         }
 
         function displayQuestion(question) {
@@ -181,6 +181,14 @@
             Object.entries(question.options).forEach(([key, value]) => {
                 const optionElement = createOptionElement(key, value);
                 elements.options.appendChild(optionElement);
+            });
+
+            // Add change event listener to radio inputs
+            const radioInputs = elements.options.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    elements.submitBtn.disabled = false;
+                });
             });
         }
 
@@ -222,8 +230,10 @@
         function checkPreviousAnswer() {
             const answeredQuestion = questionsAnswered[currentQuestionIndex];
             if (answeredQuestion) {
-                elements.submitBtn.disabled = true;
-                elements.nextBtn.disabled = false;
+                elements.submitBtn.textContent = 'Next';
+                elements.submitBtn.disabled = false;
+                elements.submitBtn.removeEventListener('click', handleSubmit);
+                elements.submitBtn.addEventListener('click', handleNext);
                 if (answeredQuestion.isCorrect) {
                     showCorrectAnswerFeedback();
                 } else {
@@ -272,8 +282,7 @@
             });
         }
 
-        elements.submitBtn.addEventListener('click', handleSubmit); 
-        elements.nextBtn.addEventListener('click', handleNext);
+        elements.submitBtn.addEventListener('click', handleSubmit);
 
         function handleSubmit() {
             if (!quizData.length) {
@@ -299,8 +308,9 @@
                 handleIncorrectAnswer();
             }
 
-            elements.submitBtn.disabled = true;
-            elements.nextBtn.disabled = false;
+            elements.submitBtn.textContent = 'Next';
+            elements.submitBtn.removeEventListener('click', handleSubmit);
+            elements.submitBtn.addEventListener('click', handleNext);
 
             updateScoreboard();
         }
@@ -330,7 +340,7 @@
                 loadQuestion();
             } else {
                 showFeedback('You have reached the end of the quiz.', 'blue');
-                elements.nextBtn.disabled = true;
+                elements.submitBtn.disabled = true;
             }
         }
 
