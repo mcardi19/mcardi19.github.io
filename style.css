@@ -115,6 +115,16 @@ button {
 
 }
 
+#next-btn, #submit-btn {
+    background-color: rgb(153, 65, 175) !important;
+    color: #ffffff !important;
+}
+
+#next-btn:disabled, #submit-btn:disabled {
+    background-color: #e6e6e6 !important;
+    color: #000000 !important;
+}
+
 .controls-container {
     width: 100%;
     padding: 1rem 1rem;
