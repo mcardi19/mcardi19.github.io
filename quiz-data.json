@@ -1550,5 +1550,226 @@
       },
       "answer": "B",
       "explanation": "Accommodations should be tailored to the individual's unique combination of disabilities and their specific needs."
+    },
+    {
+      "question": "What is the primary purpose of providing alternative text for active images?",
+      "options": {
+        "A": "To increase page loading speed",
+        "B": "To serve the same purpose and present the same information as the linked image",
+        "C": "To make images look better",
+        "D": "To reduce server load"
+      },
+      "answer": "B", 
+      "explanation": "Alternative text must serve the same purpose and present the same information as the linked image to ensure accessibility for users who cannot see the image."
+    },
+    {
+      "question": "When an image is inside a button or link, what should the alternative text describe?",
+      "options": {
+        "A": "The visual appearance of the image",
+        "B": "The file name of the image",
+        "C": "The destination, purpose, or function of the control",
+        "D": "The dimensions of the image"
+      },
+      "answer": "C",
+      "explanation": "For images inside interactive controls, the alternative text must describe the destination, purpose, or function of that control rather than just describing the image itself."
+    },
+    {
+      "question": "Which of the following is NOT a valid way to provide an accessible name for an image?",
+      "options": {
+        "A": "Using the alt attribute",
+        "B": "Using aria-label",
+        "C": "Using CSS background-image",
+        "D": "Using aria-labelledby"
+      },
+      "answer": "C",
+      "explanation": "CSS background-image is not a valid way to provide accessible names for images. Valid methods include alt attributes, aria-label, aria-labelledby, and title attributes."
+    },
+    {
+      "question": "When should an image's alternative text duplicate adjacent link text?",
+      "options": {
+        "A": "Always",
+        "B": "Never",
+        "C": "Only for important links",
+        "D": "Only for decorative images"
+      },
+      "answer": "B",
+      "explanation": "Alternative text should not duplicate adjacent link text as it creates a stutter effect for screen reader users."
+    },
+    {
+      "question": "What should be done with alternative text for images that contain trademark symbols?",
+      "options": {
+        "A": "Ignore the trademark symbol",
+        "B": "Only describe the main image",
+        "C": "Include text representing the trademark symbol",
+        "D": "Remove all symbols from the description"
+      },
+      "answer": "C",
+      "explanation": "The text alternative should include text to represent trademark, service mark, registered trademark or copyright symbols that are embedded in the image."
+    },
+    {
+      "question": "What is required for canvas elements used to display images?",
+      "options": {
+        "A": "Only role='img' attribute",
+        "B": "Only aria-label attribute",
+        "C": "role='img' and a text alternative via aria-label or aria-labelledby",
+        "D": "No special requirements"
+      },
+      "answer": "C",
+      "explanation": "Canvas elements used for images must have role='img' and provide a text alternative through either aria-label or aria-labelledby pointing to text within the canvas element."
+    },
+    {
+      "question": "What is the 'Reality Check' test for active image alternatives?",
+      "options": {
+        "A": "The image should load quickly",
+        "B": "The text should match the image pixel-for-pixel",
+        "C": "Replacing the image with its alternative text should still convey the same purpose",
+        "D": "The alternative text should be in multiple languages"
+      },
+      "answer": "C",
+      "explanation": "The Reality Check test states that if you replaced the active image with its text alternative, you should still understand the destination, purpose, or function of the control."
+    },
+    {
+      "question": "How should alternative text handle meaningful text embedded in images?",
+      "options": {
+        "A": "Paraphrase the embedded text",
+        "B": "Contain the exact text from the image",
+        "C": "Ignore the embedded text",
+        "D": "Summarize the text briefly"
+      },
+      "answer": "B",
+      "explanation": "Best practice states that if there is meaningful text embedded in the active image, the alternative text should contain that exact text."
+    },
+    {
+      "question": "What should be done when an image is purely decorative and the control already has descriptive text?",
+      "options": {
+        "A": "Provide detailed alternative text",
+        "B": "Duplicate the control's text in the alternative text",
+        "C": "Treat the image as decorative and assess under the Decorative Images checkpoint",
+        "D": "Remove the image entirely"
+      },
+      "answer": "C",
+      "explanation": "When an image is redundant to the control's text content and purely decorative, it should be assessed under the Alternative Text (Decorative Images) checkpoint rather than providing duplicate information."
+    },
+    {
+      "question": "When using ARIA labels for images in HTML, which attribute combination correctly provides alternative text?",
+      "options": {
+        "A": "role='image' and aria-description",
+        "B": "role='img' and aria-labelledby",
+        "C": "role='picture' and aria-label", 
+        "D": "role='graphic' and aria-description"
+      },
+      "answer": "B",
+      "explanation": "The correct combination is role='img' with either aria-label or aria-labelledby. The aria-labelledby attribute points to the ID of descriptive text elsewhere on the page."
+    },
+    {
+      "question": "What is the correct way to implement alternative text for a canvas element used to display images?",
+      "options": {
+        "A": "Add an alt attribute to the canvas tag",
+        "B": "Include descriptive text inside canvas tags",
+        "C": "Use role='img' and aria-label/aria-labelledby pointing to text within the canvas",
+        "D": "Wrap the canvas in a figure element with figcaption"
+      },
+      "answer": "C", 
+      "explanation": "Canvas elements used for images must have role='img' and provide alternative text through aria-label or aria-labelledby that references text within the canvas element itself."
+    },
+    {
+      "question": "In the context of accessibility testing tools, what is the primary purpose of the ANDI bookmarklet?",
+      "options": {
+        "A": "To check color contrast ratios",
+        "B": "To reveal an image's text alternatives and ARIA attributes",
+        "C": "To validate HTML markup",
+        "D": "To test keyboard navigation"
+      },
+      "answer": "B",
+      "explanation": "The ANDI (Accessible Name & Description Inspector) bookmarklet is specifically designed to reveal accessibility information including text alternatives and ARIA attributes for images and other elements."
+    },
+    {
+      "question": "When implementing VoiceOver testing on iOS 14+, which setting must be disabled to properly test image alternatives?",
+      "options": {
+        "A": "Speech Recognition",
+        "B": "VoiceOver Recognition",
+        "C": "Image Description",
+        "D": "Automatic Alt Text"
+      },
+      "answer": "B",
+      "explanation": "On iOS 14+, VoiceOver Recognition must be turned off in Settings > Accessibility > VoiceOver > VoiceOver Recognition to properly test manual image alternatives without AI/OCR interference."
+    },
+    {
+      "question": "In PDF/UA compliance testing, under which code should missing alternative text be reported?",
+      "options": {
+        "A": "UA1:7.1-1",
+        "B": "UA1:7.2-2",
+        "C": "UA1:7.3-3",
+        "D": "UA1:7.4-4"
+      },
+      "answer": "C",
+      "explanation": "According to PDF/UA standards, missing alternative text should be reported under code UA1:7.3-3, which specifically deals with alternative text requirements for figures and images."
+    },
+    {
+      "question": "What is the correct implementation for providing alternative text to an SVG element?",
+      "options": {
+        "A": "<svg alt='description'>",
+        "B": "<svg><title>description</title></svg>",
+        "C": "<svg role='img' aria-label='description'>",
+        "D": "<svg><desc>description</desc></svg>"
+      },
+      "answer": "C",
+      "explanation": "SVG elements should use role='img' with aria-label to provide accessible names, as the alt attribute is not valid for SVG elements."
+    },
+    {
+      "question": "When using Microsoft Office's accessibility checker, where should alternative text be placed for images?",
+      "options": {
+        "A": "In both Title and Description fields",
+        "B": "Only in the Title field",
+        "C": "Only in the Description field",
+        "D": "In either field, they serve the same purpose"
+      },
+      "answer": "C",
+      "explanation": "In Microsoft Office applications, alternative text should be placed in the Description field while the Title field can be left empty. The Description field is what screen readers will announce."
+    },
+    {
+      "question": "What is the correct way to handle dynamic images that change content in terms of alternative text?",
+      "options": {
+        "A": "Use a static alternative text that describes all possible states",
+        "B": "Update the aria-label or alt attribute when the image changes",
+        "C": "Remove alternative text for dynamic images",
+        "D": "Use only decorative alternatives for dynamic images"
+      },
+      "answer": "B",
+      "explanation": "When images change dynamically, their alternative text (via aria-label or alt attribute) should be updated programmatically to match the current state and content of the image."
+    },
+    {
+      "question": "In Windows application testing, which property should be examined in Accessibility Insights for alternative text?",
+      "options": {
+        "A": "AccessibleName",
+        "B": "LegacyIAccessible.Name",
+        "C": "Description",
+        "D": "Label"
+      },
+      "answer": "B",
+      "explanation": "When using Accessibility Insights for Windows, the LegacyIAccessible.Name property contains the alternative text that will be read by screen readers."
+    },
+    {
+      "question": "What is the maximum recommended length for alternative text according to best practices?",
+      "options": {
+        "A": "50 characters",
+        "B": "100 characters",
+        "C": "150 characters",
+        "D": "200 characters"
+      },
+      "answer": "C",
+      "explanation": "Best practices recommend that alternative text should be less than 150 characters to ensure it remains concise while still conveying the necessary information."
+    },
+    {
+      "question": "When is it appropriate to treat an image as decorative or redundant?",
+      "options": {
+        "A": "When the image is small or low resolution",
+        "B": "When the image information is provided elsewhere as text on the page",
+        "C": "When the image takes too long to load",
+        "D": "When the image contains complex information"
+      },
+      "answer": "B",
+      "explanation": "If the information presented by the image is already provided elsewhere on the page as real text, the image can be treated as redundant or decorative since the content is accessible through the text version."
     }
+    
   ]
