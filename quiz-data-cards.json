@@ -1,0 +1,662 @@
+[
+    {
+      "front": "Why must all content be presented in text or have a text equivalent when designing for users who are blind?",
+      "back": "Screen readers can only interpret text content or text alternatives"
+    },
+    {
+      "front": "Why is it insufficient to convey information using only visual attributes like color or spatial location?", 
+      "back": "Screen readers cannot interpret visual styling, making critical information inaccessible"
+    },
+    {
+      "front": "What is most critical when ensuring keyboard functionality for blind users?",
+      "back": "Testing keyboard navigation with screen reader active due to behavioral differences"
+    },
+    {
+      "front": "Why is proper markup with good structure and semantics important for accessibility?",
+      "back": "Allows screen reader users to effectively navigate and understand content via semantic elements"
+    },
+    {
+      "front": "Why must custom controls have correct name/label, role, and value that update appropriately?",
+      "back": "Screen readers rely on ARIA attributes to convey purpose and state of custom controls"
+    },
+    {
+      "front": "Why must users receive immediate screen reader feedback after actions?",
+      "back": "Silence can cause confusion about whether actions were successful"
+    },
+    {
+      "front": "When are audio descriptions necessary for video content?",
+      "back": "When visual elements convey information not described in the original audio"
+    },
+    {
+      "front": "Why don't custom swipe actions work with mobile screen readers?",
+      "back": "Screen readers use swipe gestures for navigation, overriding custom actions"
+    },
+    {
+      "front": "What ensures interactive elements are accessible on mobile for blind users?",
+      "back": "Using click actions instead of custom swipe gestures"
+    },
+    {
+      "front": "What's the main challenge for blind users with content relying on visual feedback?",
+      "back": "Unable to perceive changes/updates without text/audio confirmation"
+    },
+    {
+      "front": "Why must pinch-to-zoom not be disabled for low vision users?",
+      "back": "Users need to enlarge content to a readable size"
+    },
+    {
+      "front": "Why must text meet contrast guidelines against backgrounds?",
+      "back": "Low vision users may struggle to distinguish text without sufficient contrast"
+    },
+    {
+      "front": "Why do links/buttons need visible focus and hover states?",
+      "back": "Helps low vision users identify keyboard/mouse focus location"
+    },
+    {
+      "front": "Why need clear visual distinction between content and controls?",
+      "back": "Low vision users may struggle to distinguish controls from text"
+    },
+    {
+      "front": "What assistive tech is commonly used by low vision users?",
+      "back": "Screen magnifiers like ZoomText or MAGic"
+    },
+    {
+      "front": "What issue occurs with dynamic content when using screen magnifiers?",
+      "back": "Content may appear outside visible magnified area"
+    },
+    {
+      "front": "Why do some low vision users prefer color customization?",
+      "back": "Reduces eye strain and improves readability"
+    },
+    {
+      "front": "What is NOT recommended for low vision users?",
+      "back": "Disabling zoom features"
+    },
+    {
+      "front": "How do low vision users typically interact with interfaces?",
+      "back": "Use both keyboard and mouse with visible focus indicators"
+    },
+    {
+      "front": "Why must dynamic changes appear near visual focus?",
+      "back": "Changes outside magnified area may be missed"
+    },
+    {
+      "front": "Why avoid using only color to convey information?",
+      "back": "Color-blind users may miss important information"
+    },
+    {
+      "front": "What is the most common type of color-blindness?",
+      "back": "Deuteranopia (red-green color-blindness)"
+    },
+    {
+      "front": "What helps accommodate color-blind users?",
+      "back": "Using patterns or textures in addition to colors"
+    },
+    {
+      "front": "What is Achromatopsia?",
+      "back": "Complete color-blindness where world is seen in grayscale"
+    },
+    {
+      "front": "What tech specifically helps color-blind users?",
+      "back": "EnChroma glasses"
+    },
+    {
+      "front": "Why avoid red/green alone for status indicators?",
+      "back": "Red-green color-blind users can't distinguish between them"
+    },
+    {
+      "front": "What practice should NOT be used for color-blind users?",
+      "back": "Using color coding as only means of conveying information"
+    },
+    {
+      "front": "What is Tritanopia?",
+      "back": "Color-blindness affecting blue and yellow perception"
+    },
+    {
+      "front": "What's true about assistive tech for color-blind users?",
+      "back": "Few specific options exist; users must adapt"
+    },
+    {
+      "front": "How should graphs be designed for color-blind users?",
+      "back": "Include shapes/patterns along with color coding"
+    },
+    {
+      "front": "Why are synchronized captions required vs transcripts?",
+      "back": "Captions align text with video timing"
+    },
+    {
+      "front": "What must transcripts include for audio content?",
+      "back": "All sounds including music and sound effects"
+    },
+    {
+      "front": "Why are transcripts crucial for deafblind users?",
+      "back": "Can be converted to braille via screen readers"
+    },
+    {
+      "front": "Why might deaf users prefer sign language over captions?",
+      "back": "Sign language may be their primary language"
+    },
+    {
+      "front": "What's essential for video accessibility for deaf users?",
+      "back": "Synchronized captions"
+    },
+    {
+      "front": "What challenge do deaf users face with multimedia?",
+      "back": "Lack of textual alternatives for audio content"
+    },
+    {
+      "front": "What are closed captions (CC)?",
+      "back": "Optional text that viewers can enable/disable"
+    },
+    {
+      "front": "Why aren't transcripts sufficient for time-based media?",
+      "back": "No synchronization with video timing"
+    },
+    {
+      "front": "Why include non-speech sound descriptions?",
+      "back": "Provides context and emotional tone"
+    },
+    {
+      "front": "What helps video accessibility for sign language users?",
+      "back": "Including sign language interpretation"
+    },
+    {
+      "front": "What tech do deafblind users commonly use?",
+      "back": "Screen readers with refreshable braille displays"
+    },
+    {
+      "front": "What's a refreshable braille display's function?",
+      "back": "Translates digital text to braille using raised pins"
+    },
+    {
+      "front": "Why are transcripts essential for deafblind users?",
+      "back": "Braille displays can't interpret audio/video directly"
+    },
+    {
+      "front": "How do blindness/deafness considerations apply to deafblindness?",
+      "back": "Both apply plus emphasis on text alternatives"
+    },
+    {
+      "front": "What limits video captions for deafblind users?",
+      "back": "Braille displays may not refresh fast enough"
+    },
+    {
+      "front": "How do refreshable braille displays connect?",
+      "back": "As peripheral devices via USB/Bluetooth"
+    },
+    {
+      "front": "What's critical for deafblind web content?",
+      "back": "Text-based transcripts for all multimedia"
+    },
+    {
+      "front": "How do deafblind users use screen readers vs blind users?",
+      "back": "Output to braille displays instead of audio"
+    },
+    {
+      "front": "Why avoid relying on video captions for deafblind users?",
+      "back": "Braille displays can't keep pace with captions"
+    },
+    {
+      "front": "What challenge do deafblind users face with videos/podcasts?",
+      "back": "Cannot access content without transcripts"
+    },
+    {
+      "front": "Why is keyboard-only operation important?",
+      "back": "Users with motor disabilities may not be able to use a mouse"
+    },
+    {
+      "front": "What helps users with limited motor control?",
+      "back": "Large click targets for links and buttons"
+    },
+    {
+      "front": "Why maintain visible focus indicators?",
+      "back": "Shows current focus during keyboard navigation"
+    },
+    {
+      "front": "Why warn before session timeouts?",
+      "back": "Motor disabilities require more response time"
+    },
+    {
+      "front": "What tech enables voice control?",
+      "back": "Speech recognition software"
+    },
+    {
+      "front": "What is a mouth stick?",
+      "back": "Tool held in mouth to press keyboard keys"
+    },
+    {
+      "front": "Why avoid requiring drag-and-drop?",
+      "back": "Difficult for users with limited motor control"
+    },
+    {
+      "front": "What helps users who only control feet?",
+      "back": "Foot-operated keyboard or switch"
+    },
+    {
+      "front": "What role does assistive software play?",
+      "back": "Adapts input methods to user abilities"
+    },
+    {
+      "front": "Why allow adjustable timing controls?",
+      "back": "Motor disabilities need extra interaction time"
+    },
+    {
+      "front": "What helps speech recognition users?",
+      "back": "Clear and consistent navigation elements"
+    },
+    {
+      "front": "What is an expanded keyboard?",
+      "back": "Larger keyboard with bigger keys for limited motor control"
+    },
+    {
+      "front": "Why provide sufficient response time?",
+      "back": "Motor disabilities require more time to interact"
+    },
+    {
+      "front": "Why include both focus and hover states?",
+      "back": "Visual cues for keyboard and mouse users"
+    },
+    {
+      "front": "What helps motor-disabled users with forms?",
+      "back": "Minimizing required input fields"
+    },
+    {
+      "front": "How accommodate alternative input devices?",
+      "back": "Ensure keyboard accessibility for all features"
+    },
+    {
+      "front": "How prevent accidental activation?",
+      "back": "Sufficient spacing between interactive elements"
+    },
+    {
+      "front": "Why avoid time-sensitive content?",
+      "back": "Motor disabilities need more time to react"
+    },
+    {
+      "front": "How does word prediction help?",
+      "back": "Reduces keystrokes needed for text input"
+    },
+    {
+      "front": "How does speech recognition improve accessibility?",
+      "back": "Enables navigation via voice commands"
+    },
+    {
+      "front": "What is a speech disability?",
+      "back": "Difficulty producing/organizing speech sounds correctly"
+    },
+    {
+      "front": "What characterizes stuttering?",
+      "back": "Involuntary repetition/prolongation of sounds"
+    },
+    {
+      "front": "What is Apraxia?",
+      "back": "Difficulty coordinating speech muscles"
+    },
+    {
+      "front": "What is unaided AAC?",
+      "back": "Nonverbal communication like gestures/sign language"
+    },
+    {
+      "front": "What differentiates aided vs unaided AAC?",
+      "back": "Aided requires external tools; unaided doesn't"
+    },
+    {
+      "front": "What's an example of high-tech aided AAC?",
+      "back": "Electronic device generating synthesized speech"
+    },
+    {
+      "front": "Why avoid voice-only input?",
+      "back": "Speech disabilities may prevent effective use"
+    },
+    {
+      "front": "What causes Dysarthria?",
+      "back": "Brain damage impairing speech muscles"
+    },
+    {
+      "front": "What characterizes Cluttering?",
+      "back": "Rapid, irregular speech lacking proper grammar"
+    },
+    {
+      "front": "What's AAC's main purpose?",
+      "back": "Provides alternative expression means for speech disabilities"
+    },
+    {
+      "front": "What helps users with speech disabilities?",
+      "back": "Multiple communication options like chat/email"
+    },
+    {
+      "front": "What do speech sound disorders affect?",
+      "back": "Physical production of specific speech sounds"
+    },
+    {
+      "front": "What characterizes non-vocal individuals?",
+      "back": "Cannot produce speaking voice"
+    },
+    {
+      "front": "What are aided AAC systems?",
+      "back": "Tools like communication boards and electronic devices"
+    },
+    {
+      "front": "Why are high-tech AAC devices beneficial?",
+      "back": "Can store/retrieve messages for complex communication"
+    },
+    {
+      "front": "What's the main challenge with voice input apps?",
+      "back": "Excludes users who cannot produce speech"
+    },
+    {
+      "front": "What are phonemic disorders?",
+      "back": "Difficulty distinguishing/using speech sounds correctly"
+    },
+    {
+      "front": "What's an example of unaided AAC?",
+      "back": "Facial expressions and gestures"
+    },
+    {
+      "front": "How accommodate speech disabilities in apps?",
+      "back": "Provide text-based input methods"
+    },
+    {
+      "front": "Who uses AAC as supplement vs replacement?",
+      "back": "Mild speech disabilities use as supplement"
+    },
+    {
+      "front": "Why simplify interfaces for cognitive disabilities?",
+      "back": "Complex interfaces cause information overload"
+    },
+    {
+      "front": "Why limit choices on screen?",
+      "back": "Too many choices cause decision paralysis"
+    },
+    {
+      "front": "What helps users with memory loss?",
+      "back": "Consistent layouts and retained information"
+    },
+    {
+      "front": "Why minimize distractions?",
+      "back": "Attention deficits struggle with focus amid distractions"
+    },
+    {
+      "front": "What challenge do CAPTCHAs present?",
+      "back": "May not understand required action"
+    },
+    {
+      "front": "How do help features assist?",
+      "back": "Provide guidance for navigation/task completion"
+    },
+    {
+      "front": "Why keep media content short?",
+      "back": "Difficulty maintaining focus on long content"
+    },
+    {
+      "front": "Why test with actual users?",
+      "back": "Reveals real-world effectiveness of design choices"
+    },
+    {
+      "front": "What cognitive challenge affects metaphor understanding?",
+      "back": "Limited comprehension of abstract language"
+    },
+    {
+      "front": "How help with math anxiety?",
+      "back": "Use plain language and visual aids"
+    },
+    {
+      "front": "How does interface complexity affect users?",
+      "back": "Can overwhelm and cause disengagement"
+    },
+    {
+      "front": "Why maintain consistent navigation?",
+      "back": "Reduces cognitive effort for learning/remembering"
+    },
+    {
+      "front": "How do ads affect attention deficits?",
+      "back": "Distract from primary tasks"
+    },
+    {
+      "front": "How do illustrations help reading difficulty?",
+      "back": "Allows choosing preferred learning modality"
+    },
+    {
+      "front": "What happens without help features?",
+      "back": "Users may abandon challenging tasks"
+    },
+    {
+      "front": "Why are multi-step processes challenging?",
+      "back": "Short-term memory loss affects information retention"
+    },
+    {
+      "front": "How present choices effectively?",
+      "back": "Group related options with simple language"
+    },
+    {
+      "front": "How do idioms affect comprehension?",
+      "back": "May confuse literal interpretation"
+    },
+    {
+      "front": "Why simplify both content and interface?",
+      "back": "Complex interface overwhelms despite simple content"
+    },
+    {
+      "front": "What helps maintain task focus?",
+      "back": "Clear, consistent path to completion"
+    },
+    {
+      "front": "How do long text blocks affect users?",
+      "back": "Difficult to maintain focus and process information"
+    },
+    {
+      "front": "Why supplement text with other media?",
+      "back": "Provides alternative ways to understand information"
+    },
+    {
+      "front": "What do dyslexic users experience?",
+      "back": "Letters appear to move or switch places"
+    },
+    {
+      "front": "Why avoid maximum contrast?",
+      "back": "Can cause visual stress for some users"
+    },
+    {
+      "front": "How balance contrast needs?",
+      "back": "Adjust within acceptable ranges for all users"
+    },
+    {
+      "front": "Why avoid pure black on white?",
+      "back": "Creates visual effects that hinder reading"
+    },
+    {
+      "front": "How do dyslexia simulations help?",
+      "back": "Shows designers how text appears jumbled"
+    },
+    {
+      "front": "What text strategy to avoid?",
+      "back": "Mixed font styles/sizes in same paragraph"
+    },
+    {
+      "front": "Why maintain sufficient contrast?",
+      "back": "Low contrast can make text unreadable"
+    },
+    {
+      "front": "What challenge do dyslexic users face?",
+      "back": "Visual distortion of letters"
+    },
+    {
+      "front": "What reduces visual stress?",
+      "back": "Sans-serif fonts and proper spacing"
+    },
+    {
+      "front": "Why avoid flashing lights?",
+      "back": "Can trigger photo-epileptic seizures"
+    },
+    {
+      "front": "What is a photo-epileptic seizure?",
+      "back": "Seizure triggered by flashing visual stimuli"
+    },
+    {
+      "front": "What famous case involved flashing lights?",
+      "back": "1997 Pokémon episode causing seizures"
+    },
+    {
+      "front": "What flash frequency is hazardous?",
+      "back": "More than 3 times per second"
+    },
+    {
+      "front": "What's NOT a seizure cause?",
+      "back": "Soft classical music"
+    },
+    {
+      "front": "Why might driving be restricted after seizures?",
+      "back": "Safety risk from unexpected seizures"
+    },
+    {
+      "front": "What design prevents seizures?",
+      "back": "Avoid rapid flashing sequences"
+    },
+    {
+      "front": "What content risks seizures?",
+      "back": "Flashing/strobe-like videos"
+    },
+    {
+      "front": "What's true about seizures?",
+      "back": "Abnormal brain impulses affect processing"
+    },
+    {
+      "front": "Why avoid all flashing content?",
+      "back": "Ensures safety for susceptible users"
+    },
+    {
+      "front": "What are multiple disabilities?",
+      "back": "Two or more disabilities of unspecified type/degree"
+    },
+    {
+      "front": "Why are needs hard to determine?",
+      "back": "Combinations and impacts vary greatly"
+    },
+    {
+      "front": "What supports multiple disability communication?",
+      "back": "Augmentative and alternative methods"
+    },
+    {
+      "front": "What makes environments more accessible?",
+      "back": "Support for AAC and assistive technologies"
+    },
+    {
+      "front": "Why not focus on single disabilities?",
+      "back": "Ignores needs from combined disabilities"
+    },
+    {
+      "front": "What characterizes multiple disabilities?",
+      "back": "Various possible disability combinations"
+    },
+    {
+      "front": "Why follow accessibility standards?",
+      "back": "Provides foundation for addressing diverse needs"
+    },
+    {
+      "front": "What's an example of compound disability?",
+      "back": "Autism with speech disability"
+    },
+    {
+      "front": "Why is assistive tech important?",
+      "back": "Helps overcome functional limitations"
+    },
+    {
+      "front": "What's the goal for accommodation?",
+      "back": "Individualized support for specific disability combinations"
+    },
+    {
+      "front": "What's the purpose of active image alt text?",
+      "back": "Present same information as linked image"
+    },
+    {
+      "front": "What should button image alt text describe?",
+      "back": "Control's destination, purpose, or function"
+    },
+    {
+      "front": "What's NOT valid for image accessible names?",
+      "back": "CSS background-image"
+    },
+    {
+      "front": "Should alt text duplicate link text?",
+      "back": "No, creates screen reader stutter"
+    },
+    {
+      "front": "How handle trademark symbols in alt text?",
+      "back": "Include text representing the symbol"
+    },
+    {
+      "front": "What's required for canvas images?",
+      "back": "role='img' and aria-label/labelledby"
+    },
+    {
+      "front": "What's the Reality Check test?",
+      "back": "Alt text should convey same purpose as image"
+    },
+    {
+      "front": "How handle embedded image text?",
+      "back": "Include exact text in alt text"
+    },
+    {
+      "front": "What if image is decorative with descriptive control text?",
+      "back": "Treat as decorative image"
+    },
+    {
+      "front": "What's correct ARIA image labeling?",
+      "back": "role='img' with aria-labelledby"
+    },
+    {
+      "front": "How implement canvas alt text?",
+      "back": "role='img' plus aria-label/labelledby to inner text"
+    },
+    {
+      "front": "What's ANDI's purpose?",
+      "back": "Reveals text alternatives and ARIA attributes"
+    },
+    {
+      "front": "What setting affects iOS VoiceOver testing?",
+      "back": "VoiceOver Recognition must be off"
+    },
+    {
+      "front": "Which PDF/UA code for missing alt text?",
+      "back": "UA1:7.3-3"
+    },
+    {
+      "front": "How provide SVG alt text?",
+      "back": "role='img' with aria-label"
+    },
+    {
+      "front": "Where put Office image alt text?",
+      "back": "Description field only"
+    },
+    {
+      "front": "How handle dynamic image alt text?",
+      "back": "Update aria-label/alt when image changes"
+    },
+    {
+      "front": "Which Windows property shows alt text?",
+      "back": "LegacyIAccessible.Name"
+    },
+    {
+      "front": "When treat image as decorative?",
+      "back": "When info is elsewhere as text"
+    },
+    {
+      "front": "What's CAPTCHA alt text purpose?",
+      "back": "Describe verification purpose"
+    },
+    {
+      "front": "What's required for accessible CAPTCHA?",
+      "back": "Multiple completion modalities"
+    },
+    {
+      "front": "What's CAPTCHA Reality Check test?",
+      "back": "Complete with eyes closed using non-visual options"
+    },
+    {
+      "front": "What's critical CAPTCHA issue?",
+      "back": "Vision-only completion option"
+    },
+    {
+      "front": "Which Windows property for CAPTCHA alt text?",
+      "back": "Name or LegacyIAccessible.Name"
+    }
+]

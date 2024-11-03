@@ -1750,17 +1750,6 @@
       "explanation": "When using Accessibility Insights for Windows, the LegacyIAccessible.Name property contains the alternative text that will be read by screen readers."
     },
     {
-      "question": "What is the maximum recommended length for alternative text according to best practices?",
-      "options": {
-        "A": "50 characters",
-        "B": "100 characters",
-        "C": "150 characters",
-        "D": "200 characters"
-      },
-      "answer": "C",
-      "explanation": "Best practices recommend that alternative text should be less than 150 characters to ensure it remains concise while still conveying the necessary information."
-    },
-    {
       "question": "When is it appropriate to treat an image as decorative or redundant?",
       "options": {
         "A": "When the image is small or low resolution",
@@ -1770,6 +1759,61 @@
       },
       "answer": "B",
       "explanation": "If the information presented by the image is already provided elsewhere on the page as real text, the image can be treated as redundant or decorative since the content is accessible through the text version."
+    },
+
+    {
+      "question": "What is the primary purpose of alternative text for CAPTCHA images?",
+      "options": {
+        "A": "To provide the solution to the CAPTCHA",
+        "B": "To describe the specific CAPTCHA image content",
+        "C": "To describe the general purpose of the CAPTCHA verification",
+        "D": "To provide decorative text for screen readers"
+      },
+      "answer": "C",
+      "explanation": "The alternative text for CAPTCHA should describe its overall purpose rather than the specific image content, as providing the actual CAPTCHA solution would defeat its security purpose."
+    },
+    {
+      "question": "What is a critical requirement for CAPTCHA implementations to be accessible?",
+      "options": {
+        "A": "They must use only visual verification methods",
+        "B": "They must provide multiple modalities for completion",
+        "C": "They must avoid using audio alternatives",
+        "D": "They must rely on a single sense for verification"
+      },
+      "answer": "B", 
+      "explanation": "CAPTCHA implementations must not rely on a single sense and must provide alternate forms using different modalities (like audio alternatives) to accommodate users with different disabilities."
+    },
+    {
+      "question": "When testing CAPTCHA accessibility with a screen reader, what is the 'Reality Check' test?",
+      "options": {
+        "A": "Verifying that the CAPTCHA is visible on screen",
+        "B": "Checking that the alternative text reveals the CAPTCHA solution",
+        "C": "Confirming that the CAPTCHA can be completed with eyes closed using non-visual options",
+        "D": "Ensuring the CAPTCHA has high color contrast"
+      },
+      "answer": "C",
+      "explanation": "The Reality Check test verifies that users can complete the CAPTCHA using only a screen reader and keyboard, with their eyes closed, typically using an audio alternative."
+    },
+    {
+      "question": "What is considered a critical accessibility issue for CAPTCHA implementation?",
+      "options": {
+        "A": "Using complex visual patterns",
+        "B": "Having a text alternative longer than 150 characters",
+        "C": "Having only one option that requires vision to complete",
+        "D": "Using automated verification methods"
+      },
+      "answer": "C",
+      "explanation": "Having only one CAPTCHA option that requires vision is considered a critical issue because it makes the verification process completely inaccessible to users who are blind or have visual impairments."
+    },
+    {
+      "question": "In Windows application testing, which property should be checked for CAPTCHA alternative text using Accessibility Insights?",
+      "options": {
+        "A": "AccessibleDescription",
+        "B": "Name or LegacyIAccessible.Name",
+        "C": "ImageDescription",
+        "D": "AltText"
+      },
+      "answer": "B",
+      "explanation": "When using Accessibility Insights for Windows, the Name or LegacyIAccessible.Name property should be checked to verify the appropriate alternative text for CAPTCHA elements."
     }
-    
   ]

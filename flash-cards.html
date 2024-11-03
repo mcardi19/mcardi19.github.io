@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flash Cards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .card-content {
+            opacity: 0;
+            animation: slideUp 1s cubic-bezier(.50,0,0,1) forwards;
+            animation-delay: 0.15s;
+        }
+
+        .flip-card {
+            perspective: 1000px;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card-front {
+            background-color: #ffffff;
+        }
+
+        .flip-card-back {
+            background-color: #f8f9fa;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="p-0 container">
+        <div id="card-container" class="p-3 rounded-5">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-content"></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Counter -->
+        <div id="card-counter" class="d-flex justify-content-left px-3 mb-3">
+            <div class="card-number">Card: <span class="current-card">1</span>/<span class="total-cards">0</span></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-container">
+            <div id="controls" class="d-flex flex-row p-md-4 gap-2">
+                <button type="button" id="prev-btn" class="btn btn-secondary">Previous</button>
+                <button type="button" id="next-btn" class="btn btn-primary">Next</button>
+            </div>
+            <div id="controls" class="d-flex flex-row p-md-4">
+                <a href="quesionnaire.html" class="py-2 mx-auto">Take Quiz</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        let flashCards = [];
+        let currentCardIndex = 0;
+
+        // DOM elements
+        const elements = {
+            flipCard: document.querySelector('.flip-card'),
+            frontContent: document.querySelector('.flip-card-front .card-content'),
+            backContent: document.querySelector('.flip-card-back .card-content'),
+            prevBtn: document.getElementById('prev-btn'),
+            nextBtn: document.getElementById('next-btn'),
+            currentCard: document.querySelector('.current-card'),
+            totalCards: document.querySelector('.total-cards')
+        };
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', initializeFlashCards);
+        elements.flipCard.addEventListener('click', flipCard);
+        elements.prevBtn.addEventListener('click', showPreviousCard);
+        elements.nextBtn.addEventListener('click', showNextCard);
+
+        function initializeFlashCards() {
+            fetch('quiz-data-cards.json')
+                .then(response => response.json())
+                .then(data => {
+                    flashCards = shuffleArray(data);
+                    elements.totalCards.textContent = flashCards.length;
+                    showCard();
+                })
+                .catch(() => {
+                    elements.frontContent.textContent = 'Failed to load flash cards.';
+                });
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function showCard() {
+            elements.frontContent.textContent = flashCards[currentCardIndex].front;
+            elements.backContent.textContent = flashCards[currentCardIndex].back;
+            elements.currentCard.textContent = currentCardIndex + 1;
+            
+            elements.prevBtn.disabled = currentCardIndex === 0;
+            elements.nextBtn.disabled = currentCardIndex === flashCards.length - 1;
+        }
+
+        function flipCard() {
+            elements.flipCard.classList.toggle('flipped');
+        }
+
+        function showPreviousCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                elements.flipCard.classList.remove('flipped');
+                showCard();
+            }
+        }
+
+        function showNextCard() {
+            if (currentCardIndex < flashCards.length - 1) {
+                currentCardIndex++;
+                elements.flipCard.classList.remove('flipped');
+                showCard();
+            }
+        }
+    </script>
+</body>
+</html>
